@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap');
+
+body {
+  background-color: white;
+  font-family: 'Fraunces', serif;
+  color: #262626;
+  font-size: 17px;
+  line-height: 21px;
+}
+
+h1 {
+  color: black;
+  font-family: 'Helvetica';
+  font-size : 40px;
+  line-height: 50px;
+}
+
+h2 {
+  color: #DADADA;
+  font-family: 'Helvetica';
+}
+
+a {
+  color: #DADADA;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+i {
+  font-size: 30px;
+}
+
+div {
+  margin: 20px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.card-white {
+  background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 0 40px #DADADA;
+}
+
+.container {
+  width: 600px;   /* This sets the width */
+  margin: 7% auto; /* This automatically sets left/right margins */
+}
+
+.list-inline {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+/*_____________RESPONSIVE______________*/
+
+@media (max-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
+
+  .container {
+    width: 600px;
+  }
+}
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .container {
+    width: 500px;
+  }
+}
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  body {
+  font-size: 12px;
+  line-height: 17px;
+  }
+
+  h1 {
+  font-size : 20px;
+  line-height: 30px;
+  }
+
+  .container {
+    width: 300px;
+  }
+}
