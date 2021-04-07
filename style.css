@@ -1,25 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap');
 
-body {
-  background-color: white;
-  font-family: 'Fraunces', serif;
-  color: #262626;
-  font-size: 17px;
-  line-height: 21px;
-}
-
-h1 {
-  color: black;
-  font-family: 'Helvetica';
-  font-size : 40px;
-  line-height: 50px;
-}
-
-h2 {
-  color: #DADADA;
-  font-family: 'Helvetica';
-}
-
 a {
   color: #DADADA;
   text-decoration: none;
@@ -65,6 +45,42 @@ div {
 .list-inline > li {
   display: inline-block;
   padding: 0px 10px;
+}
+
+
+/*_____________NEW_COMPONANTS______________*/
+
+body {
+  background-color: lightgray;
+}
+
+/* HEADER */
+
+h1 {
+  font-family: 'Helvetica';
+  font-weight: lighter;
+  margin: 0;
+  padding-left: 40px;
+  display: flex;
+  min-height: 100px;
+  font-size: 90px;
+  letter-spacing: 0;
+}
+
+h1 span {
+  display: inline-flex;
+}
+
+h1 span:nth-child(even) {
+  overflow: hidden;
+  letter-spacing: -1em;
+  opacity: 0;
+  transition: all ease-in-out .8s;
+}
+
+h1:hover span:nth-child(even) {
+  letter-spacing: 0;
+  opacity: 1;
 }
 
 /*_____________RESPONSIVE______________*/
