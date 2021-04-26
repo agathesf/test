@@ -94,6 +94,7 @@ ul {
   margin-bottom: 10px;
   list-style: none;
   padding: 0;
+  position: relative;
 }
 
 li {
@@ -135,17 +136,24 @@ h3 {
 .description {
   display: none;
   position: absolute;
-  bottom: 140%;
+  top: -290px;
   left: 20px;
-  width: 60vw;
+  width: 30vw;
   font-size: 14px;
 }
 
 .project:hover .description{
-  opacity: 1;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
+}
+
+.project:hover .titre {
+  display: block;
+}
+
+.project:hover .img-container {
+  display: block;
 }
 
 p {
@@ -153,12 +161,16 @@ p {
   align-self: end;
 }
 
-img {
-  width: 230px;
-  display: block;
+.titre {
+  font-size: 90px; 
+  inline-size: max-content;
+  line-height: 50px; 
+  align-self: start; 
+  font-weight:300;
   position: absolute;
-  bottom: 100%;
-  right: 20px;
+  top: -70px;
+  left: 20px;
+  display: none;
 }
 
 /*_____________RESPONSIVE______________*/
