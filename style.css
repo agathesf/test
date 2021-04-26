@@ -1,25 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300&display=swap');
 
-body {
-  background-color: white;
-  font-family: 'Fraunces', serif;
-  color: #262626;
-  font-size: 17px;
-  line-height: 21px;
-}
-
-h1 {
-  color: black;
-  font-family: 'Helvetica';
-  font-size : 40px;
-  line-height: 50px;
-}
-
-h2 {
-  color: #DADADA;
-  font-family: 'Helvetica';
-}
-
 a {
   color: #DADADA;
   text-decoration: none;
@@ -31,10 +11,6 @@ a:hover {
 
 i {
   font-size: 30px;
-}
-
-div {
-  margin: 20px;
 }
 
 .img-circle {
@@ -67,34 +43,187 @@ div {
   padding: 0px 10px;
 }
 
+
+/*_____________NEW_COMPONANTS______________*/
+
+html {
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  background-color: #f1efed;
+  font-family: 'Helvetica' !important;
+}
+
+/* HEADER */
+
+.header {
+  padding: 0 20px;
+}
+
+h1 {
+  font-weight: 300 !important;
+  margin: 0;
+  display: flex;
+  min-height: 100px;
+  font-size: 90px !important;
+  letter-spacing: 0;
+}
+
+h1 span {
+  display: inline-flex;
+}
+
+h1 span:nth-child(even) {
+  overflow: hidden;
+  letter-spacing: -1em;
+  opacity: 0;
+  transition: all ease-in-out .8s;
+}
+
+h1:hover span:nth-child(even) {
+  letter-spacing: 0;
+  opacity: 1;
+}
+
+/* CONTENT */
+
+.content {
+  position: fixed;
+  bottom: 0px;
+}
+
+ul {
+  margin-bottom: 10px;
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+li {
+  width: 100vw;
+  border-top: black 1px solid; 
+}
+
+h2 {
+  padding: 0 20px;
+  font-size: 22px !important;
+  font-weight: 400;
+  margin: 4px 0px 3px 0px;
+}
+
+.project:hover h2{
+  font-style: italic;
+}
+
+h3 {
+  padding: 0 20px;
+  font-size: 18px !important;
+  font-weight: 400;
+  margin: 6px 0px 3px 0px;
+}
+
+.display-flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.last-line h2{
+  margin: 10px 0px 3px 0px;
+}
+
+.project:hover h3{
+  opacity: 0;
+}
+
+.description {
+  display: none;
+  position: absolute;
+  bottom: 105%;
+  left: 20px;
+  width: 30vw;
+  font-size: 14px;
+}
+
+.project:hover .description{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.project:hover .titre {
+  display: block;
+}
+
+.project:hover img {
+  display: block;
+}
+
+p {
+  margin: 0;
+  align-self: end;
+}
+
+img {
+  display: none;
+  width: 500px;
+  position: absolute;
+  bottom: 105%;
+  right: 20px;
+}
+
+.titre {
+  font-size: 90px; 
+  inline-size: max-content;
+  line-height: 50px; 
+  align-self: start; 
+  font-weight:300;
+  position: absolute;
+  top: -70px;
+  left: 20px;
+  display: none;
+}
+
+
+.cursor-dot,
+.cursor-dot-outline {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out,
+                transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}
+
+.cursor-dot-outline {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}
+
 /*_____________RESPONSIVE______________*/
 
 @media (max-width: 960px) {
   /* For a screen < 960px, this CSS will be read */
 
-  .container {
-    width: 600px;
-  }
 }
+
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
-  .container {
-    width: 500px;
-  }
+
 }
+
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
-  body {
-  font-size: 12px;
-  line-height: 17px;
-  }
 
-  h1 {
-  font-size : 20px;
-  line-height: 30px;
-  }
-
-  .container {
-    width: 300px;
-  }
 }
