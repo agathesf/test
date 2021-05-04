@@ -79,7 +79,7 @@ h1 span:nth-child(even) {
   overflow: hidden;
   letter-spacing: -1em;
   opacity: 0;
-  transition: all ease-in-out .8s;
+  transition: all ease-in-out .4s;
 }
 
 h1:hover span:nth-child(even) {
@@ -142,18 +142,14 @@ h3 {
   position: absolute;
   bottom: 105%;
   left: 20px;
-  width: 30vw;
-  font-size: 14px;
+  width: 60vw;
+  font-size: 13px;
 }
 
 .project:hover .description{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-}
-
-.project:hover .titre {
-  display: block;
+  display: flex;
+  /*grid-template-columns: 1fr 1fr;
+  grid-gap: 136px;*/
 }
 
 .project:hover img {
@@ -167,24 +163,19 @@ p {
 
 img {
   display: none;
-  width: 500px;
+  width: 400px;
   position: absolute;
-  bottom: 105%;
   right: 20px;
+  bottom: 105%;
 }
 
-.titre {
-  font-size: 90px; 
-  inline-size: max-content;
-  line-height: 50px; 
-  align-self: start; 
-  font-weight:300;
-  position: absolute;
-  top: -70px;
-  left: 20px;
-  display: none;
+#titre {
+  padding-left: 60px;
+  width: 400px;
 }
 
+
+/*_____________CURSOR______________*/
 
 .cursor-dot,
 .cursor-dot-outline {
