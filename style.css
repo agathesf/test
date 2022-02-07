@@ -85,6 +85,26 @@ a {
   opacity: 1;
 }
 
+.orange {
+  color: orange !important;
+}
+
+.eye-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.eye{
+  margin: 5px;
+/*   background:#ccc; */
+}
+.pupil{
+  position:relative;
+/*   transform:  rotate(390deg); */
+/*   transform-origin: 20px center; */
+}
+
 /*_____________CURSOR______________*/
 .custom-cursor {
   position: fixed;
