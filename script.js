@@ -1,127 +1,110 @@
-var cursor = {
-    delay: 2,
-    _x: 0,
-    _y: 0,
-    endX: (window.innerWidth / 2),
-    endY: (window.innerHeight / 2),
-    cursorVisible: true,
-    cursorEnlarged: false,
-    $dot: document.querySelector('.cursor-dot'),
-    $outline: document.querySelector('.cursor-dot-outline'),
-    
-    init: function() {
-        // Set up element sizes
-        this.dotSize = this.$dot.offsetWidth;
-        this.outlineSize = this.$outline.offsetWidth;
-        
-        this.setupEventListeners();
-        this.animateDotOutline();
-    },
-    
-//     updateCursor: function(e) {
-//         var self = this;
-        
-//         console.log(e)
-        
-//         // Show the cursor
-//         self.cursorVisible = true;
-//         self.toggleCursorVisibility();
+document.addEventListener("DOMContentLoaded", function(event) {
 
-//         // Position the dot
-//         self.endX = e.pageX;
-//         self.endY = e.pageY;
-//         self.$dot.style.top = self.endY + 'px';
-//         self.$dot.style.left = self.endX + 'px';
-//     },
-    
-    setupEventListeners: function() {
-        var self = this;
-        
-        // Anchor hovering
-        document.querySelectorAll('a').forEach(function(el) {
-            el.addEventListener('mouseover', function() {
-                self.cursorEnlarged = true;
-                self.toggleCursorSize();
-            });
-            el.addEventListener('mouseout', function() {
-                self.cursorEnlarged = false;
-                self.toggleCursorSize();
-            });
-        });
-        
-        // Click events
-        document.addEventListener('mousedown', function() {
-            self.cursorEnlarged = true;
-            self.toggleCursorSize();
-        });
-        document.addEventListener('mouseup', function() {
-            self.cursorEnlarged = false;
-            self.toggleCursorSize();
-        });
-  
-  
-        document.addEventListener('mousemove', function(e) {
-            // Show the cursor
-            self.cursorVisible = true;
-            self.toggleCursorVisibility();
+  var cursor = document.querySelector(".custom-cursor");
+  var links = document.querySelectorAll("a");
+  var initCursor = false;
+  var page = document.querySelector("html");
+  var eyes = document.querySelector(".eyes");
 
-            // Position the dot
-            self.endX = e.pageX;
-            self.endY = e.pageY;
-            self.$dot.style.top = self.endY + 'px';
-            self.$dot.style.left = self.endX + 'px';
-        });
-        
-        // Hide/show cursor
-        document.addEventListener('mouseenter', function(e) {
-            self.cursorVisible = true;
-            self.toggleCursorVisibility();
-            self.$dot.style.opacity = 1;
-            self.$outline.style.opacity = 1;
-        });
-        
-        document.addEventListener('mouseleave', function(e) {
-            self.cursorVisible = true;
-            self.toggleCursorVisibility();
-            self.$dot.style.opacity = 0;
-            self.$outline.style.opacity = 0;
-        });
-    },
-    
-    animateDotOutline: function() {
-        var self = this;
-        
-        self._x += (self.endX - self._x) / self.delay;
-        self._y += (self.endY - self._y) / self.delay;
-        self.$outline.style.top = self._y + 'px';
-        self.$outline.style.left = self._x + 'px';
-        
-        requestAnimationFrame(this.animateDotOutline.bind(self));
-    },
-    
-    toggleCursorSize: function() {
-        var self = this;
-        
-        if (self.cursorEnlarged) {
-            self.$dot.style.transform = 'translate(-50%, -50%) scale(0.75)';
-            self.$outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        } else {
-            self.$dot.style.transform = 'translate(-50%, -50%) scale(1)';
-            self.$outline.style.transform = 'translate(-50%, -50%) scale(1)';
-        }
-    },
-    
-    toggleCursorVisibility: function() {
-        var self = this;
-        
-        if (self.cursorVisible) {
-            self.$dot.style.opacity = 1;
-            self.$outline.style.opacity = 1;
-        } else {
-            self.$dot.style.opacity = 0;
-            self.$outline.style.opacity = 0;
-        }
+  for (var i = 0; i < links.length; i++) {
+    var selfLink = links[i];
+
+    selfLink.addEventListener("mouseover", function() {
+      cursor.classList.add("custom-cursor--link");
+    });
+    selfLink.addEventListener("mouseout", function() {
+      cursor.classList.remove("custom-cursor--link");
+    });
+  }
+
+  window.onmousemove = function(e) {
+    var mouseX = e.clientX;
+    var mouseY = e.clientY;
+
+    if (!initCursor) {
+      // cursor.style.opacity = 1;
+      TweenLite.to(cursor, 0.3, {
+        opacity: 1
+      });
+      initCursor = true;
     }
-}
 
-cursor.init();
+    TweenLite.to(cursor, 0, {
+      top: mouseY + "px",
+      left: mouseX + "px"
+    });
+  };
+
+  window.onmouseout = function(e) {
+    TweenLite.to(cursor, 0.3, {
+      opacity: 0
+    });
+    initCursor = false;
+  };
+
+  page.addEventListener("mouseleave", function() {
+    // highlight the mouseout target
+    eyes.classList.add("orange");
+
+    // reset the color after a short delay
+    setTimeout(function() {
+      eyes.target.style.color = "";
+    }, 500);
+  }, false);
+
+  page.addEventListener("mouseenter", function() {
+    // highlight the mouseout target
+    eyes.classList.remove("orange");
+
+    // reset the color after a short delay
+    setTimeout(function() {
+      eyes.target.style.color = "";
+    }, 500);
+  }, false);
+
+  // console.log("hi :)");
+
+  let eyeBall = document.querySelector(".eyeball"),
+      pupil = document.querySelector(".pupil"),
+      eyeArea = eyeBall.getBoundingClientRect(),
+      pupilArea = pupil.getBoundingClientRect(),
+      R = 57,
+      r = pupilArea.width/2,
+      centerX = eyeArea.left + R,
+      centerY = eyeArea.top + R;
+
+  document.addEventListener("mousemove", (e)=>{
+    let x = e.clientX - centerX,
+        y = e.clientY - centerY,
+        theta = Math.atan2(y,x),
+        angle = theta*180/Math.PI + 360;
+    
+    
+    pupil.style.transform = `translateX(${R - r +"px"}) rotate(${angle + "deg"})`;
+    pupil.style.transformOrigin = `${r +"px"} center`;
+  });
+
+  let eyeBallBis = document.querySelector(".eyeball-bis"),
+      pupilBis = document.querySelector(".pupil-bis"),
+      eyeAreaBis = eyeBallBis.getBoundingClientRect(),
+      pupilAreaBis = pupilBis.getBoundingClientRect(),
+      Rb = 57,
+      rb = pupilAreaBis.width/2,
+      centerXb = eyeAreaBis.left + Rb,
+      centerYb = eyeAreaBis.top + Rb;
+
+  document.addEventListener("mousemove", (e)=>{
+    let xb = e.clientX - centerXb,
+        yb = e.clientY - centerYb,
+        thetab = Math.atan2(yb,xb),
+        angleb = thetab*180/Math.PI + 360;
+    
+    
+    pupilBis.style.transform = `translateX(${Rb - rb +"px"}) rotate(${angleb + "deg"})`;
+    pupilBis.style.transformOrigin = `${rb +"px"} center`;
+  });
+
+
+
+});
+

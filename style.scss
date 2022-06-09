@@ -1,0 +1,138 @@
+
+/*____________VARIABLE_____________*/
+
+$light : rgba(242, 242, 231, 1);
+$dark : rgba(16, 16, 13, 1);
+
+/*_____________GLOBAL______________*/
+
+* {
+    cursor: none !important;
+}
+
+html {
+    cursor: none !important;
+}
+
+body {
+    cursor: none !important;
+    margin: 0;
+    background-color: $dark !important;
+    font-family: 'Helvetica' !important;
+}
+
+h1, h2, h3, p {
+    margin: 0px !important;
+    line-height: 1;
+    color: $light;
+    font-size: 70px !important;
+    font-weight: 200 !important;
+}
+
+a {
+    text-decoration: none;
+    color: $light !important;
+    font-weight: 200 !important;
+}
+
+/*_____________NAVBAR______________*/
+
+.navigation {
+    display: block;
+    width: 50px;
+}
+
+.sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 0;
+}
+.wrapper {
+    display: flex;
+    padding: 0px 30px;
+    justify-content: space-between;
+    transform: rotate(-90deg) translate(0px, 40px);
+    transform-origin: left bottom;
+    width: 100vh;
+    & a {
+        font-size: 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        &:hover {
+            /*text-decoration: none;*/
+        }
+    }
+}
+
+/*_____________HEADER______________*/
+
+.header h1 {
+  font-weight: 300 !important;
+  margin: 0;
+  display: flex;
+  min-height: 100px;
+  font-size: 20px !important;
+  letter-spacing: 0;
+}
+
+.header h1 span {
+  display: inline-flex;
+}
+
+.header h1 span:nth-child(even) {
+  overflow: hidden;
+  letter-spacing: -1em;
+  opacity: 0;
+  transition: all ease-in-out .4s;
+}
+
+.header h1:hover span:nth-child(even) {
+  letter-spacing: 0;
+  opacity: 1;
+}
+
+/*_____________CURSOR______________*/
+
+.custom-cursor {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    transform: translate(-50%, -50%) scale(.3);
+    z-index: 1000;
+}
+.custom-cursor--link {
+    transform: translate(-50%, -50%) scale(.8);
+}
+
+/*
+.cursor-dot,
+.cursor-dot-outline {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease-in-out,
+                transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}
+
+.cursor-dot-outline {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}*/
